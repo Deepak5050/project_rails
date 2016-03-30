@@ -8,6 +8,7 @@ class TagsController < ApplicationController
 	end
 
 	def destroy
+		before_filter :require_login, only: [:destroy]
 		@tag = Tag.find(params[:id]).destroy
 		redirect_to tags_path
 	end
